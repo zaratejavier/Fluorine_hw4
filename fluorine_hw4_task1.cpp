@@ -7,8 +7,8 @@
 
 #include <iostream>
 #include <string>
-#include <cstring>
-
+#include <iomanip>
+#include <algorithm>
 using namespace std;
 
 class HouseInfo{ 
@@ -19,92 +19,45 @@ class HouseInfo{
 	public:
 		HouseInfo() : streetNumber(0),streetName(""), Price(0.0) {}
 		
+		//getter/////////////////////////
+		int getPrice(){return Price;}
 		
-		//getters/////////////////////////
-		int getStreetNumber()
+		int printMarketAnalysis(int i)
 		{
-			return streetNumber;
-		}
-		string getStreetName()
-		{
-			return streetName;
-		}
-		double getPrice()
-		{
-			return Price;
+			cout << (i+1) << " House " << streetNumber << " " 
+			 << streetName << fixed << setprecision(2) << " [$" << Price << "]" << endl;
 		}
 		
 		
-		
-		//setters/////////////////////////
-		void setPrice(double temp)
+		void aquirehouseInfo(int i)
 		{
-			Price = temp;
-	 	}
-	 	void setStreetName(string temp)
-		{
-			streetName = temp;
-	 	}
-	 	int setStreetNumber(int temp)
-		{
-			streetNumber = temp;
-		}
-	 	
-	 	
-	 	
-	 	//getting input from the user//////
-		void aquireString()
-		{
+			cout << "Enter info for " << i << " house" << endl  << "Please enter the street Number:" << endl;
+			cin >> streetNumber;
+			cout << "Please enter the street Name:" << endl;
 			cin.ignore();
-	        getline(cin, streetName);
-	        cin.clear();
-        }
-		void aquirehouseInfo(int i, HouseInfo h)
-		{
-        	cout << "Enter info for " << i << " house" << endl;
-			cout << "Please enter the street Number:" << endl;
-        	cin >> streetNumber;
-        	cout << "Please enter the street Name:" << endl;
-        	aquireString();
-        	cout << "Please enter the Price:" << endl;
-        	cin >> Price;
-        	cout << endl << endl;
-    	}
+			getline(cin, streetName);
+			cout << "Please enter the Price:" << endl;
+			cin >> Price;
+			cout << endl << endl;
+    		}
 };
 
 void comparePrices(HouseInfo h[2]);
-
 // Main function ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main() {
 	HouseInfo house_array[3]; //array of objects
-	for(int i=0; i<3; i++)house_array[i].aquirehouseInfo(i,house_array[i]);
+	for(int i=1; i<4; i++)house_array[(i-1)].aquirehouseInfo(i);
 	comparePrices(house_array);
 	return 0;
 }
 
 void comparePrices(HouseInfo h[2])
 {
-	cout << "Your Market analysis is as follows:" << endl;
 	for(int i=0;i<3;i++)
-	{
         for (int j=0; j<3;j++)
-		{
-            if(h[i].getPrice()>h[j].getPrice())
-			{
-                double temp;     
-				temp = h[i].getPrice();         
-                h[i].setPrice(h[j].getPrice());
-                h[j].setPrice(temp);
-                
-                string temp1 = h[i].getStreetName();              
-                h[i].setStreetName(h[j].getStreetName());
-                h[j].setStreetName(temp1);
-                
-                int temp2 = h[i].getStreetNumber();              
-                h[i].setStreetNumber(h[j].getStreetNumber());
-                h[j].setStreetNumber(temp2);
-            }
-        }
-    }
-    for(int i=0; i<3; i++) cout << i << " House " << h[i].getStreetNumber() << " " << h[i].getStreetName()  << " [$" << h[i].getPrice() << "]" << endl;
+			if(h[i].getPrice()>h[j].getPrice()) 
+				swap(h[i], h[j]);
+    cout << "Your Market analysis is as follows:" << endl;
+    for(int i=0; i<3; i++) 
+    	h[i].printMarketAnalysis(i);	
 }
