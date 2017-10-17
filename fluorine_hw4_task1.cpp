@@ -1,13 +1,12 @@
-
-
+// File: fluorine_hw3_task1.cpp
+// Created by Javier Zarate on 10/13/17 for CS1410.
+// Copyright (c) 2017 WSU
 #include <iostream>
 #include <string>
 #include <cstring>
-
 using namespace std;
 
 const int SIZE = 3;
-
 
 class HouseInfo {
 private:
@@ -15,8 +14,8 @@ private:
     string streetName;
     double Price;
 public:
-    HouseInfo() : streetNumber(0), streetName(""), Price(0.0) {}
-
+    HouseInfo(): streetNumber(0), streetName(""), Price(0.0)
+    {}
 
     //getters/////////////////////////
     int getStreetNumber() {
@@ -32,7 +31,7 @@ public:
     }
 
     //setters/////////////////////////
-   /*void setPrice(double temp) {
+   void setPrice(double temp) {
         Price = temp;
     }
 
@@ -42,6 +41,14 @@ public:
 
     int setStreetNumber(int temp) {
         streetNumber = temp;
+    }
+
+
+    /* void setAddress(double n, string s, int p)
+    {
+        streetNumber = num;
+        streetName = s;
+        Price = p;
     }*/
 
     //getting input from the user
