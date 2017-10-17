@@ -1,5 +1,5 @@
-// file: Florine_HW4.cpp
-// Created by Andrew Bills/Javier Zarate on 10/16/2017 for CS1410. Florine
+// file: Fluorine_HW4_task1.cpp
+// Created by Andrew Bills/Javier Zarate on 10/16/2017 for CS1410. Fluorine
 
 #include <iostream>
 #include <string>
