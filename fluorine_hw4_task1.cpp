@@ -9,15 +9,6 @@
 
 using namespace std;
 
-//this template is lets me make the command to_string which allows me to convert a integer to a string
-template <typename T>
-string to_string(T Number)
-{
-    ostringstream OutputStringStream;
-    OutputStringStream << Number;
-    return OutputStringStream.str();
-}
-
 class HouseInfo{ 
 	private:
 		int streetNumber;
